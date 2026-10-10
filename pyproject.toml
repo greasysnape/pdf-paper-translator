@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-paper-translator"
+version = "0.5.2"
+description = "Layout-preserving PDF translation for academic papers"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["pdf", "translation", "arxiv", "llm", "gemini"]
+dependencies = [
+    "PyMuPDF>=1.24.3",
+    "google-genai>=1.0",
+    "python-dotenv>=1.0",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+pdftrans = "translator.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["translator*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
